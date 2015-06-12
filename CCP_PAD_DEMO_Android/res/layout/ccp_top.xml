@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="@dimen/ccp_capacity_item_width"
+	android:background="#142a8f"
+	android:orientation="horizontal" >
+	<ImageView
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center"
+		android:src="@drawable/odwbo_logo" />
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="right|bottom"
+		android:gravity="right"
+		android:text="@string/app_title_tips"
+		android:textColor="@color/white"
+		android:textSize="@dimen/title_large_text_size"
+		android:textStyle="bold"
+		android:visibility="gone" />
+</LinearLayout>

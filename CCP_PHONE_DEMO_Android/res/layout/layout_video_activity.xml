@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="#2D343D"
+	android:orientation="vertical" >
+	<ImageView
+		android:id="@+id/video_icon"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_centerInParent="true"
+		android:src="@drawable/video_icon"
+		android:visibility="visible" />
+	<Button
+		android:id="@+id/video_botton_cancle"
+		android:layout_width="fill_parent"
+		android:layout_height="50.0dip"
+		android:layout_alignParentBottom="true"
+		android:layout_marginBottom="5.0dip"
+		android:layout_weight="1.0"
+		android:background="@drawable/video_button_cancle"
+		android:maxHeight="60.0dip"
+		android:minHeight="41.0dip"
+		android:soundEffectsEnabled="true"
+		android:text="@string/str_video_call_stop"
+		android:textColor="@android:color/white"
+		android:textSize="19.0sp"
+		android:visibility="visible" />
+	<FrameLayout
+		android:id="@+id/Video_layout"
+		android:layout_width="match_parent"
+		android:layout_height="fill_parent"
+		android:layout_above="@id/video_botton_cancle"
+		android:background="@drawable/video_bg"
+		android:visibility="gone" >
+		<LinearLayout
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:padding="10dp" >
+			<FrameLayout
+				android:id="@+id/bettery_layout"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight="1" >
+				<ImageView
+					android:id="@+id/bettery_image"
+					android:layout_width="30dp"
+					android:layout_height="30dp"
+					android:layout_gravity="center"
+					android:layout_margin="5dp"
+					android:padding="3dp"
+					android:src="@drawable/bettery_0" />
+			</FrameLayout>
+			<FrameLayout
+				android:id="@+id/call_layout"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight="1" >
+				<ImageView
+					android:id="@+id/call_image"
+					android:layout_width="30dp"
+					android:layout_height="30dp"
+					android:layout_gravity="center"
+					android:layout_margin="5dp"
+					android:src="@drawable/call" />
+			</FrameLayout>
+			<FrameLayout
+				android:id="@+id/photo_layout"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight="1" >
+				<ImageView
+					android:id="@+id/photo_image"
+					android:layout_width="30dp"
+					android:layout_height="30dp"
+					android:layout_gravity="center"
+					android:layout_margin="5dp"
+					android:src="@drawable/photo" />
+			</FrameLayout>
+		</LinearLayout>
+		<SurfaceView
+			android:id="@+id/video_view"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center" >
+		</SurfaceView>
+		<RelativeLayout
+			android:id="@+id/localvideo_view"
+			android:layout_width="100dp"
+			android:layout_height="140dp"
+			android:layout_gravity="top|left"
+			android:layout_marginLeft="6.0dip"
+			android:layout_marginTop="56.0dip"
+			android:padding="2.0dip" >
+		</RelativeLayout>
+		<AbsoluteLayout
+			android:id="@+id/finger_layout"
+			android:layout_width="200dp"
+			android:layout_height="200dp"
+			android:layout_gravity="bottom|left"
+			android:layout_margin="10dp"
+			android:background="@drawable/finger_bg" >
+			<ImageView
+				android:id="@+id/finger_image"
+				android:layout_width="30dp"
+				android:layout_height="30dp"
+				android:layout_x="85dp"
+				android:layout_y="85dp"
+				android:src="@drawable/finger" />
+		</AbsoluteLayout>
+		<AbsoluteLayout
+			android:id="@+id/bar_layout"
+			android:layout_width="30dp"
+			android:layout_height="200dp"
+			android:layout_gravity="bottom|right"
+			android:layout_margin="10dp" >
+			<ImageView
+				android:layout_width="20dp"
+				android:layout_height="200dp"
+				android:layout_x="5dp"
+				android:layout_y="0dp"
+				android:src="@drawable/direction_bg" />
+			<ImageView
+				android:id="@+id/scroll_image"
+				android:layout_width="30dp"
+				android:layout_height="30dp"
+				android:layout_x="0dp"
+				android:layout_y="85dp"
+				android:src="@drawable/finger" />
+		</AbsoluteLayout>
+	</FrameLayout>
+</RelativeLayout>

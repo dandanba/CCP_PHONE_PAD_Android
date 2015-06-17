@@ -118,6 +118,7 @@ public class VideoActivity extends AudioVideoCallActivity implements View.OnClic
 		super.onReceiveTextMessage(text);
 		if (!TextUtils.isEmpty(text) && text.startsWith("receive:")) {
 			final String[] sa = text.split(":");
+			mAlertManager.alert(0);
 			// receive:IR1:IR2:IR3:IR4:bettery // receive:false:false:true:true:1
 			if (sa[1].equals("true")) {
 				mAlertManager.alert(1);
@@ -128,6 +129,7 @@ public class VideoActivity extends AudioVideoCallActivity implements View.OnClic
 			} else if (sa[4].equals("true")) {
 				mAlertManager.alert(4);
 			}
+			
 			mAlertManager.bettery(Integer.parseInt(sa[5]));
 		}
 	}

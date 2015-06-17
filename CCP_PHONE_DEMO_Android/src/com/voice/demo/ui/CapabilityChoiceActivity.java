@@ -1,4 +1,4 @@
-I/*
+/*
  *  Copyright (c) 2013 The CCP project authors. All Rights Reserved.
  *
  *  Use of this source code is governed by a Beijing Speedtong Information Technology Co.,Ltd license

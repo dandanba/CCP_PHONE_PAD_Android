@@ -107,6 +107,41 @@
 				android:layout_x="85dp"
 				android:layout_y="85dp"
 				android:src="@drawable/finger" />
+			<ImageView
+				android:id="@+id/ir2"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_x="158dp"
+				android:layout_y="30dp"
+				android:src="@drawable/ir2" />
+			<ImageView
+				android:id="@+id/ir3"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_x="110dp"
+				android:layout_y="134dp"
+				android:src="@drawable/ir3" />
+			<ImageView
+				android:id="@+id/ir1"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_x="52dp"
+				android:layout_y="6dp"
+				android:src="@drawable/ir1" />
+			<ImageView
+				android:id="@+id/ir5"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_x="5dp"
+				android:layout_y="35dp"
+				android:src="@drawable/ir5" />
+			<ImageView
+				android:id="@+id/ir4"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_x="17dp"
+				android:layout_y="134dp"
+				android:src="@drawable/ir4" />
 		</AbsoluteLayout>
 		<AbsoluteLayout
 			android:id="@+id/bar_layout"

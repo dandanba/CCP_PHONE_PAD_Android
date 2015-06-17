@@ -53,6 +53,8 @@ public class AlertManager implements OnClickListener {
 	 * 
 	 */
 	public void alert(int irId) {
+		if (irId == 0)
+			return;
 		if (mAlert != null) {
 			mAlert.cancel();
 			mAlert = null;

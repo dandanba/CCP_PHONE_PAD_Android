@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content" >
+	<TextView
+		android:id="@+id/capacity_text"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="10dp"
+		android:background="#2346d3"
+		android:drawableLeft="@drawable/odwbo_setting"
+		android:drawablePadding="@dimen/mode_desc_space"
+		android:padding="@dimen/mode_desc_space"
+		android:text="设置多我"
+		android:textColor="@color/white" />
+</LinearLayout>

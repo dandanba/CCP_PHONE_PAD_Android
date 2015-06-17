@@ -10,7 +10,6 @@
  *  in the file PATENTS.  All contributing project authors may
  *  be found in the AUTHORS file in the root of the source tree.
  */
-
 package com.voice.demo.ui;
 
 import java.sql.SQLException;
@@ -25,6 +24,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ScrollView;
@@ -85,10 +85,11 @@ import com.voice.demo.voip.NetPhoneCallActivity;
  * @version 3.6
  */
 @SuppressLint("UseSparseArrays")
-public class CapabilityChoiceActivity extends CCPBaseActivity implements CCPCapabilityItemView.OnCapacityItemClickListener, CCPAlertDialog.OnPopuItemClickListener {
+public class CapabilityChoiceActivity extends CCPBaseActivity implements CCPCapabilityItemView.OnCapacityItemClickListener, CCPAlertDialog.OnPopuItemClickListener, OnClickListener {
 	private static final int REQUEST_CODE_VIDEO_CALL = 11;
 	private String phoneStr;
 	private ScrollView mScrollView;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -102,31 +103,45 @@ public class CapabilityChoiceActivity extends CCPBaseActivity implements CCPCapa
 		}
 		CCPApplication.getInstance().initSQLiteManager();
 	}
+
 	private void initLayoutResource() {
 		mScrollView = (ScrollView) findViewById(R.id.ccp_body_sv);
 	}
+
 	private void initCapacityUI() {
 		LinearLayout layout = new LinearLayout(this);
 		layout.setOrientation(LinearLayout.VERTICAL);
 		LinearLayout.LayoutParams bottomLayoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
 		layout.setLayoutParams(bottomLayoutParams);
+		// voice item
+		// int[] voiceIconResid = new int[] { R.drawable.ccp_video_call };
+		// int[] voiceBgResid = new int[] { R.drawable.ccp_capacity_09_selector };
+		// CCPCapabilityItemView voiceCapacityItemView = getCCPCapacityItemView(R.string.str_voice, voiceIconResid, voiceBgResid);
+		View voiceCapacityItemView = getLayoutInflater().inflate(R.layout.odwbo_capacity_item, null, false);
+		voiceCapacityItemView.setLayoutParams(bottomLayoutParams);
+		voiceCapacityItemView.setId(R.drawable.ccp_video_call);
+		voiceCapacityItemView.setOnClickListener(this);
+		final TextView text = (TextView) voiceCapacityItemView.findViewById(R.id.capacity_text);
+		text.setText("呼叫多我");
+		text.setCompoundDrawablesWithIntrinsicBounds(R.drawable.odwbo_call, 0, 0, 0);
+		layout.addView(voiceCapacityItemView);
+		// other item
+		// int[] moreIconResid = new int[] { R.drawable.ccp_setting };
+		// int[] moreBgResid = new int[] { R.drawable.ccp_capacity_02_selector };
+		// CCPCapabilityItemView moreCapacityItemView = getCCPCapacityItemView(R.string.str_more, moreIconResid, moreBgResid);
+		View moreCapacityItemView = getLayoutInflater().inflate(R.layout.odwbo_capacity_item, null, false);
+		moreCapacityItemView.setLayoutParams(bottomLayoutParams);
+		moreCapacityItemView.setId(R.drawable.ccp_setting);
+		moreCapacityItemView.setOnClickListener(this);
+		layout.addView(moreCapacityItemView);
 		View attentionView = getLayoutInflater().inflate(R.layout.ccp_attention, null);
 		attentionView.setPadding(0, getResources().getDimensionPixelSize(R.dimen.small_margin_space), 0, 0);
 		TextView findViewById = (TextView) attentionView.findViewById(R.id.attention_tips);
 		findViewById.setText(R.string.str_capacity_attention);
 		layout.addView(attentionView);
-		// voice item
-		int[] voiceIconResid = new int[] { R.drawable.ccp_video_call };
-		int[] voiceBgResid = new int[] { R.drawable.ccp_capacity_09_selector };
-		CCPCapabilityItemView voiceCapacityItemView = getCCPCapacityItemView(R.string.str_voice, voiceIconResid, voiceBgResid);
-		layout.addView(voiceCapacityItemView);
-		// other item
-		int[] moreIconResid = new int[] { R.drawable.ccp_setting };
-		int[] moreBgResid = new int[] { R.drawable.ccp_capacity_02_selector };
-		CCPCapabilityItemView moreCapacityItemView = getCCPCapacityItemView(R.string.str_more, moreIconResid, moreBgResid);
-		layout.addView(moreCapacityItemView);
 		mScrollView.addView(layout);
 	}
+
 	/**
 	 * 
 	 * @param capacityTextid
@@ -152,10 +167,12 @@ public class CapabilityChoiceActivity extends CCPBaseActivity implements CCPCapa
 		iCapacityItemView.setOnCapacityItemClickListener(this);
 		return iCapacityItemView;
 	}
+
 	@Override
 	protected int getLayoutId() {
 		return R.layout.ccp_choice_capacity;
 	}
+
 	@Override
 	public void OnCapacityItemClick(int id, int resid) {
 		switch (resid) {
@@ -208,6 +225,7 @@ public class CapabilityChoiceActivity extends CCPBaseActivity implements CCPCapa
 			break;
 		}
 	}
+
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
@@ -217,6 +235,7 @@ public class CapabilityChoiceActivity extends CCPBaseActivity implements CCPCapa
 			mScrollView = null;
 		}
 	}
+
 	private void initAudioConfig() {
 		SharedPreferences sp = CcpPreferences.getSharedPreferences();
 		// 设置AUDIO_AGC
@@ -239,6 +258,7 @@ public class CapabilityChoiceActivity extends CCPBaseActivity implements CCPCapa
 			getDeviceHelper().setVideoBitRates(bitrates);
 		}
 	}
+
 	// Video ...
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -278,6 +298,7 @@ public class CapabilityChoiceActivity extends CCPBaseActivity implements CCPCapa
 			startVoIPCallAction();
 		}
 	}
+
 	@Override
 	protected void handleDialogOkEvent(int requestKey) {
 		if (requestKey == DIALOG_REQUEST_VOIP_NOT_WIFI_WARNNING) {
@@ -286,6 +307,7 @@ public class CapabilityChoiceActivity extends CCPBaseActivity implements CCPCapa
 			super.handleDialogOkEvent(requestKey);
 		}
 	}
+
 	private void startVoIPCallAction() {
 		if (!TextUtils.isEmpty(phoneStr)) {
 			Intent intent = new Intent(CapabilityChoiceActivity.this, VideoActivity.class);
@@ -294,6 +316,7 @@ public class CapabilityChoiceActivity extends CCPBaseActivity implements CCPCapa
 			startActivity(intent);
 		}
 	}
+
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
@@ -302,6 +325,7 @@ public class CapabilityChoiceActivity extends CCPBaseActivity implements CCPCapa
 		}
 		return super.onKeyDown(keyCode, event);
 	}
+
 	private void checkSDKversion() {
 		SDKVersion sdkVersion = CCPUtil.getSDKVersion(getDeviceHelper().getVersion());
 		if (sdkVersion != null) {
@@ -310,6 +334,7 @@ public class CapabilityChoiceActivity extends CCPBaseActivity implements CCPCapa
 			Log4Util.i(CCPHelper.DEMO_TAG, "The current SDK version number :" + sdkVersion.toString());
 		}
 	}
+
 	void showExitDialog() {
 		CCPAlertDialog ccpAlertDialog = new CCPAlertDialog(CapabilityChoiceActivity.this, R.string.settings_logout_warning_tip, null, R.string.settings_logout, R.string.dialog_cancle_btn);
 		// set CCP UIKey
@@ -317,6 +342,7 @@ public class CapabilityChoiceActivity extends CCPBaseActivity implements CCPCapa
 		ccpAlertDialog.create();
 		ccpAlertDialog.show();
 	}
+
 	@Override
 	protected void onReceiveBroadcast(Intent intent) {
 		super.onReceiveBroadcast(intent);
@@ -326,6 +352,7 @@ public class CapabilityChoiceActivity extends CCPBaseActivity implements CCPCapa
 			CCPApplication.getInstance().showToast(R.string.ccp_http_err);
 		}
 	}
+
 	@Override
 	protected void handleTaskBackGround(ITask iTask) {
 		super.handleTaskBackGround(iTask);
@@ -359,6 +386,7 @@ public class CapabilityChoiceActivity extends CCPBaseActivity implements CCPCapa
 			finish();
 		}
 	}
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -377,5 +405,11 @@ public class CapabilityChoiceActivity extends CCPBaseActivity implements CCPCapa
 		default:
 			break;
 		}
+	}
+
+	@Override
+	public void onClick(View v) {
+		final int id = v.getId();
+		OnCapacityItemClick(0, id);
 	}
 }

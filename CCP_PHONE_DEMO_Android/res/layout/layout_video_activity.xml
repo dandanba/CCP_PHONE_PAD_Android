@@ -4,13 +4,6 @@
 	android:layout_height="match_parent"
 	android:background="#2D343D"
 	android:orientation="vertical" >
-	<ImageView
-		android:id="@+id/video_icon"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_centerInParent="true"
-		android:src="@drawable/video_icon"
-		android:visibility="visible" />
 	<Button
 		android:id="@+id/video_botton_cancle"
 		android:layout_width="fill_parent"
@@ -164,4 +157,12 @@
 				android:src="@drawable/finger" />
 		</AbsoluteLayout>
 	</FrameLayout>
+	<ImageView
+		android:id="@+id/video_icon"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_centerHorizontal="true"
+		android:layout_centerVertical="true"
+		android:src="@drawable/video_icon"
+		android:visibility="visible" />
 </RelativeLayout>

@@ -170,12 +170,12 @@
 	<string name="str_inter_phone_room_title">在%s对讲</string>
 	<!-- video -->
 	<string name="str_video_call_begin">开始视频通话</string>
-	<string name="str_video_call_stop">结束视频通话</string>
+	<string name="str_video_call_stop">和多我说再见</string>
 	<string name="str_video_btn_call_end">结束</string>
 	<string name="app_title_video">视频通话</string>
 	<string name="str_tips_wait_invited">正在等待对方接受邀请...</string>
 	<string name="str_tips_video_nvited">请选择本次视频通话的参与者（单选）</string>
-	<string name="str_check_to_participants_video_call">点击开始视频呼叫吧</string>
+	<string name="str_check_to_participants_video_call">唤醒多我</string>
 	<string name="str_video_bottom_time" formatted="false">与%1$s视频通话中\t</string>
 	<string name="str_call_status" formatted="false">延迟时间%d（毫秒）丢包率:%d</string>
 	<string name="str_call_traffic_status" formatted="false">延迟时间%d（毫秒）丢包率:%d\n

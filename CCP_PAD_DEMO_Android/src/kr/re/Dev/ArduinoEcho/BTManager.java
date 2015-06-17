@@ -77,10 +77,8 @@ public class BTManager {
 						final boolean IR2 = Bit[1] == 1;
 						final boolean IR3 = Bit[2] == 1;
 						final boolean IR4 = Bit[3] == 1;
-
 						final byte DH = buffer[5];
 						final byte DL = buffer[6];
-
 						int Voltage = V > 125 ? 125 : V < 110 ? 110 : V;
 						Voltage = (Voltage - 110) * 10 / 16;
 						int Distance = (DH << 8) + DL;
@@ -100,6 +98,7 @@ public class BTManager {
 	public ArrayAdapter<String> mDeviceArrayAdapter;
 	public AlertDialog mDeviceListDialog;
 	public BluetoothSerialClient mClient;
+	private Context mContext;
 
 	public byte[] getBooleanArray(byte b) {
 		byte[] array = new byte[8];
@@ -139,7 +138,11 @@ public class BTManager {
 		mBluetoothDevices.add(device);
 		mDeviceArrayAdapter.add(device.getName() + "\n" + device.getAddress());
 		mDeviceArrayAdapter.notifyDataSetChanged();
-	}
+		if (device.getName().equals("OmmiBot")) {
+			connect(mContext, device);
+			mDeviceListDialog.cancel();
+		}
+	} 
 
 	public void enableBluetooth(Context context) {
 		BluetoothSerialClient btSet = mClient;
@@ -192,7 +195,8 @@ public class BTManager {
 		btSet.connect(context, device, mBTHandler);
 	}
 
-	public void initDeviceListDialog(final Context context) {
+	public void initDeviceListDialog(Context context) {
+		mContext = context;
 		mDeviceArrayAdapter = new ArrayAdapter<String>(context, R.layout.item_device);
 		ListView listView = new ListView(context);
 		listView.setAdapter(mDeviceArrayAdapter);
@@ -202,7 +206,7 @@ public class BTManager {
 				String item = (String) parent.getItemAtPosition(position);
 				for (BluetoothDevice device : mBluetoothDevices) {
 					if (item.contains(device.getAddress())) {
-						connect(context, device);
+						connect(mContext, device);
 						mDeviceListDialog.cancel();
 					}
 				}
@@ -213,7 +217,7 @@ public class BTManager {
 		builder.setView(listView);
 		builder.setPositiveButton("Scan", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int id) {
-				scanDevices(context);
+				scanDevices(mContext);
 			}
 		});
 		mDeviceListDialog = builder.create();

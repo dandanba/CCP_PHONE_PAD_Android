@@ -11,9 +11,11 @@
  *  be found in the AUTHORS file in the root of the source tree.
  */
 package com.voice.demo.voip;
+
 import android.content.Intent;
 import android.media.AudioManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
 import android.view.KeyEvent;
@@ -43,6 +45,7 @@ import com.voice.demo.interphone.InviteInterPhoneActivity;
 import com.voice.demo.tools.CCPIntentUtils;
 import com.voice.demo.ui.CCPHelper;
 import com.voice.demo.video.VideoActivity;
+
 public class CallInActivity extends AudioVideoCallActivity implements OnClickListener {
 	private TextView mVoipInputEt;
 	// 键盘
@@ -82,6 +85,12 @@ public class CallInActivity extends AudioVideoCallActivity implements OnClickLis
 	int numberOfCameras;
 	private int mWidth;
 	private int mHeight;
+	private final Handler mHandler = new Handler() {
+		public void handleMessage(Message msg) {
+			removeMessages(msg.what);
+			onClick(mVideoBegin);
+		};
+	};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -159,6 +168,7 @@ public class CallInActivity extends AudioVideoCallActivity implements OnClickLis
 				getDeviceHelper().setVideoView(mVideoView, null);
 			}
 			DisplayLocalSurfaceView();
+			mHandler.sendEmptyMessageDelayed(1, 2000);
 		} else {
 			setContentView(R.layout.layout_callin);
 			mVoipInputEt = (TextView) findViewById(R.id.voip_input);
@@ -427,7 +437,6 @@ public class CallInActivity extends AudioVideoCallActivity implements OnClickLis
 			e.printStackTrace();
 		}
 	}
-
 	/**
 	 * 延时关闭界面
 	 */
@@ -623,7 +632,6 @@ public class CallInActivity extends AudioVideoCallActivity implements OnClickLis
 		mVideoBegin.setVisibility(View.GONE);
 		isConnect = true;
 	}
-
 	/*********************************** KeyPad *************************************************/
 	private EditText mDmfInput;
 

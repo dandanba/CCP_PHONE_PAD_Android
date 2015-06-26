@@ -129,7 +129,6 @@ public class VideoActivity extends AudioVideoCallActivity implements View.OnClic
 			} else if (sa[4].equals("true")) {
 				mAlertManager.alert(4);
 			}
-			
 			mAlertManager.bettery(Integer.parseInt(sa[5]));
 		}
 	}
@@ -239,7 +238,7 @@ public class VideoActivity extends AudioVideoCallActivity implements View.OnClic
 		if (getCallHandler() != null) {
 			getCallHandler().sendMessage(getCallHandler().obtainMessage(VideoActivity.WHAT_ON_CODE_CALL_STATUS));
 		}
-		getDeviceHelper().enableLoudsSpeaker(false);
+		getDeviceHelper().enableLoudsSpeaker(true);
 	}
 
 	@Override

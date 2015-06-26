@@ -536,7 +536,7 @@ public class CallInActivity extends AudioVideoCallActivity implements OnClickLis
 		if (callid != null && callid.equals(mCurrentCallId)) {
 			if (mCallType == Device.CallType.VIDEO) {
 				initResVideoSuccess();
-				getDeviceHelper().enableLoudsSpeaker(false);
+				getDeviceHelper().enableLoudsSpeaker(true);
 			} else {
 				initialize(currIntent);
 				// voip other ..

@@ -64,6 +64,7 @@ public abstract class BaseChatActivity extends CCPBaseActivity {
 		if (mBTManager.create(getApplicationContext())) {
 			mBTManager.initDeviceListDialog(this);
 			mBTManager.showDeviceListDialog();
+			mBTManager.resume(getApplicationContext());
 		}
 	}
 
@@ -109,7 +110,7 @@ public abstract class BaseChatActivity extends CCPBaseActivity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		mBTManager.resume(getApplicationContext());
+		// mBTManager.resume(getApplicationContext());
 		updateReadStatus();
 	}
 
@@ -133,12 +134,11 @@ public abstract class BaseChatActivity extends CCPBaseActivity {
 		}
 	}
 
-	@Override
-	protected void onPause() {
-		super.onPause();
-		mBTManager.pause(getApplicationContext());
-	}
-
+	// @Override
+	// protected void onPause() {
+	// super.onPause();
+	// mBTManager.pause(getApplicationContext());
+	// }
 	private void sendbroadcast() {
 		Intent intent = new Intent(CCPIntentUtils.INTENT_IM_RECIVE);
 		intent.putExtra(KEY_GROUP_ID, mGroupId);

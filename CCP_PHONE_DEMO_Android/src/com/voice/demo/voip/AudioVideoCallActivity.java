@@ -10,7 +10,6 @@
  *  in the file PATENTS.  All contributing project authors may
  *  be found in the AUTHORS file in the root of the source tree.
  */package com.voice.demo.voip;
-
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.Arrays;

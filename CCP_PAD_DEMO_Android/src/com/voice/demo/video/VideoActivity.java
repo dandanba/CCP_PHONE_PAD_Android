@@ -1,5 +1,5 @@
 /*
-O *  Copyright (c) 2013 The CCP project authors. All Rights Reserved.
+ *  Copyright (c) 2013 The CCP project authors. All Rights Reserved.
  *
  *  Use of this source code is governed by a Beijing Speedtong Information Technology Co.,Ltd license
  *  that can be found in the LICENSE file in the root of the web site.
@@ -350,7 +350,7 @@ public class VideoActivity extends AudioVideoCallActivity implements View.OnClic
 			mWidth = width;
 			mHeight = height;
 			if (mVideoView != null) {
-				// mVideoView.getHolder().setFixedSize(Integer.parseInt(split[0]), Integer.parseInt(split[1]));
+				// mVideoView.getHolder().setFixedSize(height, width);
 				LayoutParams layoutParams2 = (LayoutParams) mVideoView.getLayoutParams();
 				layoutParams2.width = mWidth;
 				layoutParams2.height = mHeight;

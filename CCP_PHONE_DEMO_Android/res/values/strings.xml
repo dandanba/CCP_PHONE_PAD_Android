@@ -9,11 +9,11 @@
  
    An additional intellectual property rights grant can be found
    in the file PATENTS.  All contributing project authors may
-   be found in the AUTHORS file in the root of the source tree.
+   be found in the AUTHORS file in the root of the source tree.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-	<string name="app_name">odwbo客户端</string>
-	<string name="launcher_name">odwbo</string>
+	<string name="app_name">多我客户端</string>
+	<string name="launcher_name">多我</string>
 	<string name="config_error_text">读取配置账号信息错误，请核对后重新输入</string>
 	<string name="im_btn_text">IM Demo</string>
 	<string name="rest_btn_text">Rest Demo</string>

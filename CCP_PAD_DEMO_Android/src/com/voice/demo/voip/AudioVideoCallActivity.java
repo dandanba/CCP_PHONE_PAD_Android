@@ -10,6 +10,7 @@
  *  in the file PATENTS.  All contributing project authors may
  *  be found in the AUTHORS file in the root of the source tree.
  */package com.voice.demo.voip;
+
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.Arrays;
@@ -46,6 +47,7 @@ import com.voice.demo.tools.CCPUtil;
 import com.voice.demo.tools.preference.CCPPreferenceSettings;
 import com.voice.demo.tools.preference.CcpPreferences;
 import com.voice.demo.ui.CCPHelper;
+
 /**
  * 
  * <p>
@@ -492,7 +494,7 @@ public class AudioVideoCallActivity extends BaseChatActivity implements OnVoIPLi
 		System.arraycopy(pixel, 0, _pixel, 0, caps.length);
 		Arrays.sort(_pixel);
 		for (int i = 0; i < caps.length; i++) {
-			if (pixel[i] == /* _pixel[0] */800 * 480) {
+			if (pixel[i] == /* _pixel[0] */352 * 288) {
 				mCameraCapbilityIndex = i;
 				return;
 			}

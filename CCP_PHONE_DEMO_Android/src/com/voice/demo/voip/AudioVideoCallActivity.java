@@ -493,7 +493,7 @@ public class AudioVideoCallActivity extends BaseChatActivity implements OnVoIPLi
 		System.arraycopy(pixel, 0, _pixel, 0, caps.length);
 		Arrays.sort(_pixel);
 		for (int i = 0; i < caps.length; i++) {
-			if (pixel[i] == /* _pixel[0] */352 * 288) {
+			if (pixel[i] == /* _pixel[0] */800 * 480) {
 				mCameraCapbilityIndex = i;
 				return;
 			}
